@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 
 class App extends Component {
-
+  componentDidMount() {
+    this.props.dispatch({type: 'FETCH_CATEGORIES'})
+  }
   render() {
     return (
       <div>
@@ -13,4 +16,4 @@ class App extends Component {
   
 }
 
-export default App;
+export default connect()(App);
