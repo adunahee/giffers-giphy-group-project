@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import connect from 'react-redux';
+import { connect } from 'react-redux';
 
 class Favorites extends Component {
 
@@ -8,15 +8,14 @@ class Favorites extends Component {
     }
 
     getFavorites = () => {
-        (this.props.dispatch({ type: 'FETCH_FAVORITES'}))
+        this.props.dispatch({ type: 'FETCH_FAVORITES'})
     }
-
 
 
     render() {
         return (
             <div>
-
+                {JSON.stringify(this.props.reduxState.favorites)}
             </div>
         )
     }
