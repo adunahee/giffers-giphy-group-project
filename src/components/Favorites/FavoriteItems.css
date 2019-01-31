@@ -10,3 +10,7 @@
     width: 500;
     height: 450;
 }
+
+.dropdown-form {
+    min-width: 120;
+}

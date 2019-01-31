@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './FavoriteItems.css';
+import Dropdown from './Dropdown.js';
 
 // material-ui import statements
 import GridList from '@material-ui/core/GridList';
@@ -52,9 +53,9 @@ class FavoriteItems extends Component {
                                 <GridListTileBar
                                     title="title"
                                     subtitle={<span>by: Kye</span>}
-                                    // actionIcon={
-                                    //     <button>Button</button>
-                                    // }
+                                    actionIcon={
+                                        <Dropdown />
+                                    }
                                 />
                             </GridListTile>
                         ))}

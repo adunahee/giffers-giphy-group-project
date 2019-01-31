@@ -16,8 +16,8 @@ const sagaMiddleware = createSagaMiddleware();
 
 //root saga 
 function* rootSaga() {
-    yield takeEvery("FETCH_CATEGORIES", fetchCategories)
-    yield takeEvery("FETCH_GIPHY_RESULTS", fetchGiphyResults)
+    yield takeEvery("FETCH_CATEGORIES", fetchCategories);
+    yield takeEvery("FETCH_GIPHY_RESULTS", fetchGiphyResults);
 }
 
 //fetchCatgories saga
@@ -35,10 +35,10 @@ function* fetchCategories() {
 function* fetchGiphyResults() {
     try {
         const giphyResults = yield axios.get('/api/results')
-        yield put({ type: "FETCH_GIPHY_RESULTS", payload: results.data })
+        yield put({ type: "FETCH_GIPHY_RESULTS", payload: giphyResults.data })
     } catch (error) {
         console.log('error in fetchGiphyResults', error)
-        res.sendStatus(500);
+        // res.sendStatus(500);
     }
 }
 
