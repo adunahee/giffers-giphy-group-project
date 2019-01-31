@@ -21,6 +21,7 @@ function* rootSaga() {
     yield takeEvery('ADD_FAVORITE', addFavorite );
     yield takeEvery("FETCH_GIPHY_RESULTS", fetchGiphyResults);
     yield takeEvery('DELETE_CATEGORY', deleteCategory);
+    yield takeEvery('ADD_CATEGORY', addCategory);
 }
 
 //fetchCatgories saga
@@ -77,6 +78,17 @@ function* deleteCategory(action){
     }
     catch(error) {
         yield console.log('error deleteCategory saga', error);
+    }
+}
+
+//addCategory saga
+function* addCategory(action){
+    try{
+        yield axios.post('/api/category', action.payload);
+        yield put({type: 'FETCH_CATEGORIES'});
+    }
+    catch(error) {
+        yield console.log('error in addCategory saga', error);
     }
 }
 

@@ -27,4 +27,13 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+router.post('/', (req, res)=> {
+    pool.query(`INSERT INTO category (name) VALUES ($1);`, [req.body.category])
+    .then(result => {
+        res.sendStatus(200);
+    }).catch(error => {
+        console.log(`error adding catgory`, error);
+    });
+});
+
 module.exports = router;
