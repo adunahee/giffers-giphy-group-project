@@ -8,18 +8,22 @@ class Favorites extends Component {
     }
 
     getFavorites = () => {
-        (this.props.dispatch({type: }))
+        (this.props.dispatch({ type: 'FETCH_FAVORITES'}))
     }
 
 
 
     render() {
         return (
-            <div></div>
+            <div>
+
+            </div>
         )
     }
 }
 
+const mapReduxStateToProps = reduxState => ({
+    reduxState
+});
 
-
-export default connect()(Favorites);
+export default connect(mapReduxStateToProps)(Favorites);

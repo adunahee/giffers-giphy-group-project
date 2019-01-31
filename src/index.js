@@ -44,7 +44,7 @@ function* fetchFavorites() {
         let newAction = {type: 'SET_FAVORITES'};
         yield put(newAction);
     } catch (error) {
-        console.log('error in fetch favorites', error);
+        console.log('error in fetchFavorites', error);
         alert('something went wrong');
     }
 }
