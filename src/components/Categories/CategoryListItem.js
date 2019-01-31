@@ -5,15 +5,33 @@ class CategoryListItems extends Component {
 
 
   handleDelete = () => {
-    this.props.dispatch({ type: 'DELETE_CATEGORY', payload: this.props.category.id })
+    let confirmation = window.confirm('Are you sure you want to permanently delete this category?')
+    if(confirmation) {
+      this.props.dispatch({ type: 'DELETE_CATEGORY', payload: this.props.category.id })
+    } else {
+      alert('Delete aborted.')
+    }
+  }
+
+  handleEdit = () => {
+    let edit = window.prompt('Please edit category name.', this.props.category.name);
+    if (edit != null) {
+      const action = { type: 'UPDATE_CATEGORY', payload: { id: this.props.category.id, name: edit } }
+      this.props.dispatch(action)
+    }
   }
 
   render() {
     return (
-      <li>
-        {this.props.category.name}
-        <button onClick={this.handleDelete}>Delete</button>
-      </li>
+      <tr>
+        <td>
+          {this.props.category.name}
+        </td>
+        <td>
+          <button onClick={this.handleDelete}>Delete</button>
+          <button onClick={this.handleEdit}>Edit</button>
+        </td>
+      </tr>
     )
   }
 }

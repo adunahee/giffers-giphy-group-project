@@ -36,4 +36,16 @@ router.post('/', (req, res) => {
         });
 });
 
+router.put('/', (req, res) => {
+    console.log(req.body);
+    const queryText = 'UPDATE category SET name = $2 WHERE id = $1 ;';
+    pool.query(queryText, [req.body.id, req.body.name])
+    .then(result => {
+        res.sendStatus(200);
+    }).catch(error => {
+        console.log('error updating category', error);
+        res.sendStatus(500);
+    })
+})
+
 module.exports = router;
