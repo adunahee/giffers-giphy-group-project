@@ -16,7 +16,8 @@ const sagaMiddleware = createSagaMiddleware();
 
 //root saga 
 function* rootSaga() {
-    yield takeEvery("FETCH_CATEGORIES", fetchCategories)
+    yield takeEvery("FETCH_CATEGORIES", fetchCategories);
+    yield takeEvery('ADD_FAVORITE', addFavorite );
 }
 
 //fetchCatgories saga
@@ -33,7 +34,14 @@ function* fetchCategories() {
 //fetchGiphyResults saga
 
 //addFavorite saga
-
+function* addFavorite(action) {
+    try{
+        yield axios.post('/api/favorite', action.payload)
+    }
+    catch(error) {
+        yield console.log('error in addFavorite saga', error);
+    }
+}
 //setCategory saga
 
 //fetchFavorites saga
