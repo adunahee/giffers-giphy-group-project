@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Link, Route } from 'react-router-dom';
 // import Results from './../Search/Results';
-// import Favorites from './../Favorites/Favorites';
+import Favorites from './../Favorites/Favorites';
 
 
 class App extends Component {
@@ -24,7 +24,7 @@ class App extends Component {
               </li>
             </nav>
             {/* <Route exact path='/' component={Results} /> */}
-            {/* <Route exact path='/favorites' component={Favorites} /> */}
+            <Route exact path='/favorites' component={Favorites} />
           </div>
         </Router>
       </div>

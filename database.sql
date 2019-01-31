@@ -8,7 +8,7 @@ CREATE TABLE "favorites" (
 );
 
 INSERT INTO "favorites" ("url")
-VALUES ('https://gph.is/18UySK4');
+VALUES ('https://media.giphy.com/media/HKx5p4APGBxi8/giphy.gif');
 
 
 -- Each favorite image can be assigned 1 of the following categories as a Foreign Key
