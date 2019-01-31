@@ -8,6 +8,8 @@ const mapStoreToProps = reduxStore => ({
 
 class Results extends Component {
     componentDidMount() {
-        const action = { type: }
+        const action = { type: ''}
     }
 }
+
+export default Results;
