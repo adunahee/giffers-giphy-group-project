@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import App from './components/App/App';
 
 //for redux store
-import {Provider} from 'react-redux';
-import {createStore, combineReducers, applyMiddleware} from 'redux';
+import { Provider } from 'react-redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
 
 //for sagas
 import createSagaMiddleware from 'redux-saga';
-import {takeEvery, put} from 'redux-saga/effects';
+import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -17,23 +17,28 @@ const sagaMiddleware = createSagaMiddleware();
 //root saga 
 function* rootSaga() {
     yield takeEvery("FETCH_CATEGORIES", fetchCategories)
+    yield takeEvery("FETCH_GIPHY_RESULTS", fetchGiphyResults)
 }
 
 //fetchCatgories saga
 function* fetchCategories() {
-    try{
+    try {
         const categories = yield axios.get('/api/category')
-        yield put({type: "SET_CATEGORIES", payload: categories.data})
+        yield put({ type: "SET_CATEGORIES", payload: categories.data })
     }
-    catch(error) {
+    catch (error) {
         yield console.log('error fetchingCategories', error);
     }
 }
 
 //fetchGiphyResults saga
 function* fetchGiphyResults() {
-    try{
-        const giphyResults = yield axios.get('/api/')
+    try {
+        const giphyResults = yield axios.get('/api/results')
+        yield put({ type: "FETCH_GIPHY_RESULTS", payload: results.data })
+    } catch (error) {
+        console.log('error in fetchGiphyResults', error)
+        res.sendStatus(500);
     }
 }
 
@@ -45,7 +50,7 @@ function* fetchGiphyResults() {
 
 
 //reducers
-const giphyResults = (state = [], action)=> {
+const giphyResults = (state = [], action) => {
     return state;
 }
 
