@@ -26,8 +26,6 @@ function* rootSaga() {
 
 function* fetchCategories() {
     try {
-        console.log('so fetch!');
-        
         const categories = yield axios.get('/api/category')
         yield put({ type: "SET_CATEGORIES", payload: categories.data })
     }
@@ -57,7 +55,6 @@ function* addFavorite(action) {
         yield console.log('error in addFavorite saga', error);
     }
 }
-//setCategory saga
 
 //fetchFavorites saga
 function* fetchFavorites() {
@@ -84,6 +81,9 @@ const favorites = (state = [], action) => {
 }
 
 const categories = (state = [], action) => {
+    if (action.type === 'SET_CATEGORIES'){
+        return action.payload
+    }
     return state;
 }
 

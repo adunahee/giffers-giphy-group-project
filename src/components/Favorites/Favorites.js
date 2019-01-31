@@ -9,8 +9,6 @@ class Favorites extends Component {
     }
 
     getFavorites = () => {
-        console.log('Its happening');
-        
         this.props.dispatch({ type: 'FETCH_FAVORITES'})
     }
 
