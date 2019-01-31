@@ -36,7 +36,7 @@ function* fetchCategories() {
 function* fetchGiphyResults() {
     try {
         const giphyResponse = yield axios.get('/api/results')
-        const nextAction = ({ type: "FETCH_GIPHY_RESULTS", payload: giphyResponse.data });
+        const nextAction = { type: "FETCH_GIPHY_RESULTS", payload: giphyResponse.data };
         yield put(nextAction);
     } catch (error) {
         console.log('error in fetchGiphyResults', error);

@@ -22,3 +22,4 @@ class Results extends Component {
 }
 
 export default connect(mapStoreToProps)(Results);
+
