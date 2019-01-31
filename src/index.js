@@ -34,11 +34,12 @@ function* fetchCategories() {
 //fetchGiphyResults saga
 function* fetchGiphyResults() {
     try {
-        const giphyResults = yield axios.get('/api/results')
-        yield put({ type: "FETCH_GIPHY_RESULTS", payload: results.data })
+        const giphyResponse = yield axios.get('/api/results')
+        const nextAction = ({ type: "FETCH_GIPHY_RESULTS", payload: giphyResponse.data });
+        yield put(nextAction);
     } catch (error) {
-        console.log('error in fetchGiphyResults', error)
-        res.sendStatus(500);
+        console.log('error in fetchGiphyResults', error);
+        alert('Problem with getting GIF in saga');
     }
 }
 
