@@ -36,10 +36,9 @@ function* fetchCategories() {
 function* fetchGiphyResults() {
     try {
         const giphyResults = yield axios.get('/api/results')
-        yield put({ type: "FETCH_GIPHY_RESULTS", payload: results.data })
+        yield put({ type: "FETCH_GIPHY_RESULTS", payload: giphyResults.data })
     } catch (error) {
         console.log('error in fetchGiphyResults', error)
-        res.sendStatus(500);
     }
 }
 
