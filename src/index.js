@@ -40,8 +40,8 @@ function* fetchCategories() {
 //fetchFavorites saga
 function* fetchFavorites() {
     try {
-        yield axios.get('');
-        let newAction = {type: 'SET_FAVORITES'};
+        const response = yield axios.get('/api/favorite');
+        let newAction = {type: 'SET_FAVORITES', payload: response.data};
         yield put(newAction);
     } catch (error) {
         console.log('error in fetchFavorites', error);
@@ -55,6 +55,9 @@ const giphyResults = (state = [], action)=> {
 }
 
 const favorites = (state = [], action) => {
+    if (action.type === 'SET_FAVORITES'){
+        return action.payload;
+    }
     return state;
 }
 
