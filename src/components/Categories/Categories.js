@@ -19,9 +19,17 @@ class Categories extends Component {
                 <h2>Manage Categories</h2>
                 <CategoryForm />
                 <h2>Current Categories</h2>
-                <ul>
-                    {this.buildCategoryList()}
-                </ul>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category Name</th>
+                            <th>Modify Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.buildCategoryList()}
+                    </tbody>
+                </table>
             </div>
         )
     }
