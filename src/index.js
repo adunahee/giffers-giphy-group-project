@@ -17,12 +17,17 @@ const sagaMiddleware = createSagaMiddleware();
 //root saga 
 function* rootSaga() {
     yield takeEvery("FETCH_CATEGORIES", fetchCategories);
+    yield takeEvery("FETCH_FAVORITES", fetchFavorites);
+    yield takeEvery('ADD_FAVORITE', addFavorite );
     yield takeEvery("FETCH_GIPHY_RESULTS", fetchGiphyResults);
 }
 
 //fetchCatgories saga
+
 function* fetchCategories() {
     try {
+        console.log('so fetch!');
+        
         const categories = yield axios.get('/api/category')
         yield put({ type: "SET_CATEGORIES", payload: categories.data })
     }
@@ -34,20 +39,37 @@ function* fetchCategories() {
 //fetchGiphyResults saga
 function* fetchGiphyResults() {
     try {
-        const giphyResults = yield axios.get('/api/results')
-        yield put({ type: "FETCH_GIPHY_RESULTS", payload: giphyResults.data })
+        const giphyResponse = yield axios.get('/api/results')
+        const nextAction = { type: "FETCH_GIPHY_RESULTS", payload: giphyResponse.data };
+        yield put(nextAction);
     } catch (error) {
-        console.log('error in fetchGiphyResults', error)
-        // res.sendStatus(500);
+        console.log('error in fetchGiphyResults', error);
+        alert('Problem with getting GIF in saga');
     }
 }
 
 //addFavorite saga
-
+function* addFavorite(action) {
+    try{
+        yield axios.post('/api/favorite', action.payload)
+    }
+    catch(error) {
+        yield console.log('error in addFavorite saga', error);
+    }
+}
 //setCategory saga
 
 //fetchFavorites saga
-
+function* fetchFavorites() {
+    try {
+        const response = yield axios.get('/api/favorite');
+        let newAction = {type: 'SET_FAVORITES', payload: response.data};
+        yield put(newAction);
+    } catch (error) {
+        console.log('error in fetchFavorites', error);
+        alert('something went wrong');
+    }
+}
 
 //reducers
 const giphyResults = (state = [], action) => {
@@ -55,6 +77,9 @@ const giphyResults = (state = [], action) => {
 }
 
 const favorites = (state = [], action) => {
+    if (action.type === 'SET_FAVORITES'){
+        return action.payload;
+    }
     return state;
 }
 

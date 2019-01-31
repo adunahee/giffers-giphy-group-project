@@ -7,7 +7,19 @@ const mapStoreToProps = reduxStore => ({
 });
 
 class Results extends Component {
+
     componentDidMount() {
-        const action = { type: }
+        const action = { type: 'FETCH_GIPHY_RESULTS' };
+        this.props.dispatch(action);
     }
+
+    // render(){
+    //     return (
+
+
+    //     )
+    // }
 }
+
+export default connect(mapStoreToProps)(Results);
+
