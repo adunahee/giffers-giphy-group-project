@@ -18,8 +18,10 @@ const sagaMiddleware = createSagaMiddleware();
 function* rootSaga() {
     yield takeEvery("FETCH_CATEGORIES", fetchCategories);
     yield takeEvery("FETCH_FAVORITES", fetchFavorites);
-    yield takeEvery('ADD_FAVORITE', addFavorite );
+    yield takeEvery('ADD_FAVORITE', addFavorite);
     yield takeEvery("FETCH_GIPHY_RESULTS", fetchGiphyResults);
+    yield takeEvery('DELETE_CATEGORY', deleteCategory);
+    yield takeEvery('ADD_CATEGORY', addCategory);
 }
 
 //fetchCatgories saga
@@ -48,10 +50,10 @@ function* fetchGiphyResults() {
 
 //addFavorite saga
 function* addFavorite(action) {
-    try{
+    try {
         yield axios.post('/api/favorite', action.payload)
     }
-    catch(error) {
+    catch (error) {
         yield console.log('error in addFavorite saga', error);
     }
 }
@@ -60,11 +62,33 @@ function* addFavorite(action) {
 function* fetchFavorites() {
     try {
         const response = yield axios.get('/api/favorite');
-        let newAction = {type: 'SET_FAVORITES', payload: response.data};
+        let newAction = { type: 'SET_FAVORITES', payload: response.data };
         yield put(newAction);
     } catch (error) {
         console.log('error in fetchFavorites', error);
         alert('something went wrong');
+    }
+}
+
+//deleteCategory saga
+function* deleteCategory(action) {
+    try {
+        yield axios.delete(`/api/category/${action.payload}`);
+        yield put({ type: "FETCH_CATEGORIES" });
+    }
+    catch (error) {
+        yield console.log('error deleteCategory saga', error);
+    }
+}
+
+//addCategory saga
+function* addCategory(action) {
+    try {
+        yield axios.post('/api/category', action.payload);
+        yield put({ type: 'FETCH_CATEGORIES' });
+    }
+    catch (error) {
+        yield console.log('error in addCategory saga', error);
     }
 }
 
@@ -74,14 +98,14 @@ const giphyResults = (state = [], action) => {
 }
 
 const favorites = (state = [], action) => {
-    if (action.type === 'SET_FAVORITES'){
+    if (action.type === 'SET_FAVORITES') {
         return action.payload;
     }
     return state;
 }
 
 const categories = (state = [], action) => {
-    if (action.type === 'SET_CATEGORIES'){
+    if (action.type === 'SET_CATEGORIES') {
         return action.payload
     }
     return state;
