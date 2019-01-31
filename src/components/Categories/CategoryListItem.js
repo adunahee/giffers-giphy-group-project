@@ -10,10 +10,10 @@ class CategoryListItems extends Component {
 
   render() {
     return (
-        <li>
-            {this.props.category.name}
+      <li>
+        {this.props.category.name}
         <button onClick={this.handleDelete}>Delete</button>
-        </li>
+      </li>
     )
   }
 }

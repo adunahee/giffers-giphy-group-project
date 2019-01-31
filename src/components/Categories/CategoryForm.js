@@ -2,13 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class CategoryForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            category: '',
+        }
+    }
 
-    handleAddCategory = () => {
-        this.props.dispatch({type: 'ADD_CATEGORY', payload: this.state})
+    handleAddCategory = (event) => {
+        event.preventDefault();
+        this.props.dispatch({ type: 'ADD_CATEGORY', payload: this.state })
+        this.setState({category: ''});
     }
 
     handleChange = (event) => {
-        event.preventDefault();
         this.setState({
             category: event.target.value,
         })
@@ -17,7 +24,7 @@ class CategoryForm extends Component {
     render() {
         return (
             <form onSubmit={this.handleAddCategory}>
-                <input type='text' required onChange={this.handleChange}/>
+                <input type='text' required onChange={this.handleChange} value={this.state.category}/>
                 <button type='submit'>Add Category</button>
             </form>
         )
