@@ -4,7 +4,10 @@ const axios = require('axios');
 const API_KEY = process.env.API_KEY;
 const BASE_URL = `https://api.giphy.com/v1/gifs/search?api_key=&q=&limit=25&offset=0&rating=R&lang=en`
 
-router.get('/', (req,res) => {
+const router = express.Router();
+
+
+router.get('/', (req, res) => {
     axios({
         method: 'GET',
         url: `${BASE_URL}`
