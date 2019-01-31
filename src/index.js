@@ -23,8 +23,11 @@ function* rootSaga() {
 }
 
 //fetchCatgories saga
+
 function* fetchCategories() {
     try {
+        console.log('so fetch!');
+        
         const categories = yield axios.get('/api/category')
         yield put({ type: "SET_CATEGORIES", payload: categories.data })
     }

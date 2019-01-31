@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+// import FavoriteItems from './FavoriteItems.js';
 import { connect } from 'react-redux';
 
 class Favorites extends Component {
 
-    componenentDidMount() {
+    componentDidMount() {
         this.getFavorites();
     }
 
     getFavorites = () => {
+        console.log('Its happening');
+        
         this.props.dispatch({ type: 'FETCH_FAVORITES'})
     }
 
@@ -15,7 +18,9 @@ class Favorites extends Component {
     render() {
         return (
             <div>
-                {JSON.stringify(this.props.reduxState.favorites)}
+                {/* {this.props.reduxState.favorites.map((item, i) => {
+                    <FavoriteItems key={i} item={item}/>
+                })} */}
             </div>
         )
     }
