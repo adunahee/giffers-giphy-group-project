@@ -31,6 +31,11 @@ function* fetchCategories() {
 }
 
 //fetchGiphyResults saga
+function* fetchGiphyResults() {
+    try{
+        const giphyResults = yield axios.get('/api/')
+    }
+}
 
 //addFavorite saga
 
