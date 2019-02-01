@@ -20,7 +20,8 @@ class Results extends Component {
         })
     }
 
-    searchGif = () => {
+    searchGif = (event) => {
+        event.preventDefault();
         const action = { type: 'FETCH_GIPHY_RESULTS', payload: this.state.query };
         this.props.dispatch(action);
         this.setState({
@@ -28,9 +29,7 @@ class Results extends Component {
         })
     }
 
-    componentDidMount = (event) => {
-        event.preventDefault();
-    }
+
 
     render() {
         return (
