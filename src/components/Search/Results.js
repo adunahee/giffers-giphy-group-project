@@ -37,10 +37,13 @@ class Results extends Component {
     render() {
         return (
             <div>
-                <form>
-                    <Input id='search-input' className='search-input' type='text' placeholder='Search for a gif...' onChange={this.handleChangeState}></Input>
-                    <Button onClick={this.searchGif} variant='contained' ><SearchIcon /></Button>
-                </form>
+                <Paper id='input-paper'>
+                    <form>
+                        <Input id='search-input' className='search-input' type='text' placeholder='Search for a gif...' onChange={this.handleChangeState}></Input>
+                        <Button onClick={this.searchGif} variant='contained' ><SearchIcon /></Button>
+                    </form>
+                </Paper>
+                <br />
                 <Paper id='results-paper' elevation={3}>
                     <Grid container spacing={24}>
                         {this.props.reduxState.giphyResults.map((results, i) => (
