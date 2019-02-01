@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './ResultItems.css';
+import swal from 'sweetalert';
+
 
 // material-ui import statements
 import Grid from '@material-ui/core/Grid';
@@ -12,6 +14,7 @@ import Button from '@material-ui/core/Button';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Tooltip from '@material-ui/core/Tooltip';
 
+
 class ResultItems extends Component {
 
     handleFavorite = () => {
@@ -22,11 +25,12 @@ class ResultItems extends Component {
                 type: 'ADD_FAVORITE',
                 payload: { url: this.props.results.images.downsized_medium.url }
             })
+        swal('Added to Favorites');
     }
 
     render() {
         return (
-            <Grid item md={3}>
+            <Grid item md={3}> 
                 <Card className="result-card" >
                     {/* {JSON.stringify(this.props.results.images.original)} */}
                     <CardActionArea>
