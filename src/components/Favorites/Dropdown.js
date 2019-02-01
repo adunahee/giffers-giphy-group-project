@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 
 // material-ui import statements
-import FilledInput from '@material-ui/core/FilledInput';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+
 
 class Dropdown extends Component {
     constructor(props) {
@@ -41,10 +36,10 @@ class Dropdown extends Component {
     }
 
     render() {
-        console.log(this.props.categories);
-        console.log(this.state);
-        console.log(this.props.item);
-        console.log(this.props.item.category_id);
+        // console.log(this.props.categories);
+        // console.log(this.state);
+        // console.log(this.props.item);
+        // console.log(this.props.item.category_id);
         let defValue;
         if (this.props.item.category_id === null) {
             defValue = '';
@@ -54,15 +49,15 @@ class Dropdown extends Component {
         
         return (
             <div>
-            {this.props.categories.length > 1 && 
-            <form onSubmit={this.handleSetCategory}>
-                    <select defaultValue={defValue} required onChange={this.handleChange}>
-                        <option value="" disabled defaultValue>Select your option</option>
-                {this.buildSelectInput()}
-                </select>
-                <button type='submit'>Set Category</button>
-            </form>
-            }
+                {this.props.categories.length > 1 &&
+                    <form onSubmit={this.handleSetCategory}>
+                        <select defaultValue={defValue} required onChange={this.handleChange}>
+                            <option value="" disabled defaultValue>Select your option</option>
+                            {this.buildSelectInput()}
+                        </select>
+                        <button type='submit'>Set Category</button>
+                    </form>
+                }
             </div>
         )
     }

@@ -4,12 +4,7 @@ import { connect } from 'react-redux';
 import './FavoriteItems.css';
 
 // material-ui import statements
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
+import Grid from '@material-ui/core/Grid';
 
 class Favorites extends Component {
 
@@ -31,14 +26,10 @@ class Favorites extends Component {
 
     render() {
         return (
-            <div className="item-div">
-                {/* <GridList cellHeight={180} className="grid-list">
-                    <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-                        <ListSubheader component="div">Favorite</ListSubheader>
-                    </GridListTile> */}
-                        {this.buildCards()}
-                {/* </GridList> */}
-            </div>
+                <Grid container spacing={24}>
+
+                    {this.buildCards()}
+                </Grid>
         )
     }
 }
