@@ -6,7 +6,6 @@ const BASE_URL = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=&lim
 
 const router = express.Router();
 
-
 router.get('/', (req, res) => {
     axios({
         method: 'GET',
