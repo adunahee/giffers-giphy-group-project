@@ -43,7 +43,8 @@ function* fetchCategories() {
 function* fetchGiphyResults() {
     try {
         const giphyResponse = yield axios.get('/api/results')
-        const nextAction = { type: "FETCH_GIPHY_RESULTS", payload: giphyResponse.data };
+        console.log(giphyResponse.data);
+        const nextAction = { type: "GIPHY_RESULTS", payload: giphyResponse.data};
         yield put(nextAction);
     } catch (error) {
         console.log('error in fetchGiphyResults', error);
@@ -96,17 +97,20 @@ function* addCategory(action) {
 }
 
 function* updateCategory(action) {
-    try{
+    try {
         yield axios.put('/api/category', action.payload);
-        yield put({ type: 'FETCH_CATEGORIES'})
+        yield put({ type: 'FETCH_CATEGORIES' })
     }
-    catch(error){
+    catch (error) {
         yield console.log('error updating category', error);
     }
 }
 
 //reducers
 const giphyResults = (state = [], action) => {
+    if (action.type === 'GIPHY_RESULTS') {
+        return action.payload;
+    }
     return state;
 }
 

@@ -37,9 +37,11 @@ class Results extends Component {
                 <h3>Search</h3>
                 <form onSubmit={this.searchGif} >
                     <input type='text' onChange={this.handleChangeState}></input>
-                    <button onClick={this.searchGif}></button>
+                    <button onClick={this.searchGif}>Search</button>
                 </form>
-                <ResultItems />
+                {this.props.reduxState.giphyResults.map((results, i) => (
+                            <ResultItems key={i} results={results} />
+                        ))}
             </div>
 
 
@@ -47,5 +49,9 @@ class Results extends Component {
     }
 }
 
-export default connect(mapStoreToProps)(Results);
+const mapReduxStateToProps = reduxState => ({
+    reduxState
+});
+
+export default connect(mapReduxStateToProps)(Results);
 

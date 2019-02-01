@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     console.log(req.query);
     axios({
         method: 'GET',
-        url: `${BASE_URL}?api_key=iri9IXIGe9iDaFnUY8aLHVC7rpA0TMRgq=${req.query}&limit=25&offset=0&rating=R&lang=en`
+        url: `${BASE_URL}?api_key=${API_KEY}&q=${req.query.body}&limit=25&offset=0&rating=R&lang=en`
     }).then((response) => {
         res.send(response.data.data)
     }).catch((error) => {
