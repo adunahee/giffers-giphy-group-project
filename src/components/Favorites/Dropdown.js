@@ -45,12 +45,19 @@ class Dropdown extends Component {
         console.log(this.state);
         console.log(this.props.item);
         console.log(this.props.item.category_id);
+        let defValue;
+        if (this.props.item.category_id === null) {
+            defValue = '';
+        } else {
+            defValue = this.props.item.category_id.toString();
+        }
         
         return (
             <div>
             {this.props.categories.length > 1 && 
             <form onSubmit={this.handleSetCategory}>
-                    <select defaultValue={this.props.item.category_id.toString()} required onChange={this.handleChange}>
+                    <select defaultValue={defValue} required onChange={this.handleChange}>
+                        <option value="" disabled defaultValue>Select your option</option>
                 {this.buildSelectInput()}
                 </select>
                 <button type='submit'>Set Category</button>
