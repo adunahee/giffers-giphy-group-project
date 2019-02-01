@@ -20,55 +20,48 @@ class Dropdown extends Component {
 
     handleChange = event => {
         // console.log(event.target.value);
-        this.setState({category_id: event.target.value });
+        this.setState({ category_id: event.target.value });
     };
 
     buildSelectInput = () => {
-        return this.props.categories.map((categoryObj, index) => {
+        const options = this.props.categories.map((categoryObj, index) => {
             return (<option key={index}
                 value={categoryObj.id}>
                 {categoryObj.name}
             </option>
             )
         })
+        
+        return options;
     }
 
     handleSetCategory = (event) => {
         event.preventDefault();
-        this.props.dispatch({type: "SET_FAV_CATEGORY", action: this.state})
+        this.props.dispatch({ type: "SET_FAV_CATEGORY", action: this.state })
     }
 
     render() {
         console.log(this.props.categories);
         console.log(this.state);
+        console.log(this.props.item);
+        console.log(this.props.item.category_id);
         
         return (
+            <div>
+            {this.props.categories.length > 1 && 
             <form onSubmit={this.handleSetCategory}>
-                <select required onChange={this.handleChange}>
-                    <option value="" disabled defaultValue>Select your option</option>
-                    {this.buildSelectInput()}
+                    <select defaultValue={this.props.item.category_id.toString()} required onChange={this.handleChange}>
+                {this.buildSelectInput()}
                 </select>
                 <button type='submit'>Set Category</button>
             </form>
-            //kyes material ui styling
-            // <FormControl variant="filled" className="dropdown-form">
-            //     <InputLabel>Category</InputLabel>
-            //     <Select
-            //         value={this.state.category}
-            //         onChange={this.handleChange}
-            //         input={<FilledInput name="category" id="filled-age-simple" />}
-            //     >
-            //         {this.state.categoryArray.map(category => (
-            //             <MenuItem key={category.id} value={category.id}>{category.name}</MenuItem>
-            //         ))}
-            //     </Select>
-            // </FormControl>
+            }
+            </div>
         )
     }
 }
+    const mapRStoProps = (reduxStore) => {
+        return { categories: reduxStore.categories }
+    }
 
-const mapRStoProps = (reduxStore) => {
-    return { categories: reduxStore.categories }
-}
-
-export default connect(mapRStoProps)(Dropdown);
+    export default connect(mapRStoProps)(Dropdown);
