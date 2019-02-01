@@ -6,6 +6,7 @@ import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 
 
@@ -36,16 +37,17 @@ class Results extends Component {
     render() {
         return (
             <div>
-                <h3>Search</h3>
                 <form>
-                    <Input id='input' className='search-input' type='text' placeholder='Search for a gif...' onChange={this.handleChangeState}></Input>
+                    <Input id='search-input' className='search-input' type='text' placeholder='Search for a gif...' onChange={this.handleChangeState}></Input>
                     <Button onClick={this.searchGif} variant='contained' ><SearchIcon /></Button>
                 </form>
-                <Grid container spacing={24}>      
-                    {this.props.reduxState.giphyResults.map((results, i) => (
-                                <ResultItems key={i} results={results} />
-                            ))}
-                </Grid>
+                <Paper id='results-paper' elevation={3}>
+                    <Grid container spacing={24}>
+                        {this.props.reduxState.giphyResults.map((results, i) => (
+                            <ResultItems key={i} results={results} />
+                        ))}
+                    </Grid>
+                </Paper>
             </div>
 
 
