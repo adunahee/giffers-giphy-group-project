@@ -4,7 +4,7 @@ CREATE DATABASE "giphy_search_favorites";
 CREATE TABLE "favorites" (
     "id" SERIAL PRIMARY KEY,
     "url" TEXT NOT NULL,
-    "category_id" INT DEFAULT 6
+    "category_id" INT
 );
 
 INSERT INTO "favorites" ("url")
