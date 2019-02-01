@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import swal from 'sweetalert';
 import { connect } from 'react-redux';
 
 // material-ui import statements
@@ -8,6 +8,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import swal from 'sweetalert';
 
 class Dropdown extends Component {
     constructor(props) {
@@ -37,14 +38,11 @@ class Dropdown extends Component {
 
     handleSetCategory = (event) => {
         event.preventDefault();
-        this.props.dispatch({ type: "SET_FAV_CATEGORY", action: this.state })
+        this.props.dispatch({ type: "SET_FAV_CATEGORY", action: this.state });
+        swal('new category set');
     }
 
     render() {
-        console.log(this.props.categories);
-        console.log(this.state);
-        console.log(this.props.item);
-        console.log(this.props.item.category_id);
         let defValue;
         if (this.props.item.category_id === null) {
             defValue = '';
