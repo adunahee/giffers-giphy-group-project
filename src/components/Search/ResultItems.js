@@ -9,6 +9,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import Tooltip from '@material-ui/core/Tooltip';
 
 class ResultItems extends Component {
@@ -26,25 +27,25 @@ class ResultItems extends Component {
     render() {
         return (
             <Grid item md={3}>
-            <Card className="result-card" >
-                {/* {JSON.stringify(this.props.results.images.original)} */}
-                <CardActionArea>
-                    <CardMedia
-                        component="img"
-                        alt="test"
-                        className="result-media"
-                        height="340"
-                        width="340"
-                        src={this.props.results.images.downsized_medium.url}
-                        title="Title"
-                    />
-                </CardActionArea>
-                <CardActions>
-                    <Tooltip title="Add to favorites">
-                        <Button onClick={this.handleFavorite}>Add to favorites</Button>
-                    </Tooltip>
-                </CardActions>
-            </Card>
+                <Card className="result-card" >
+                    {/* {JSON.stringify(this.props.results.images.original)} */}
+                    <CardActionArea>
+                        <CardMedia
+                            component="img"
+                            alt="test"
+                            className="result-media"
+                            height="340"
+                            width="340"
+                            src={this.props.results.images.downsized_medium.url}
+                            title="Title"
+                        />
+                    </CardActionArea>
+                    <CardActions>
+                        <Tooltip title="Add to favorites">
+                            <Button onClick={this.handleFavorite}><FavoriteIcon color='secondary' /></Button>
+                        </Tooltip>
+                    </CardActions>
+                </Card>
             </Grid>
         )
     }

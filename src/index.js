@@ -44,7 +44,7 @@ function* fetchGiphyResults(action) {
     try {
         const giphyResponse = yield axios.get(`/api/results/${action.payload}`);
         console.log(giphyResponse.data);
-        const nextAction = { type: "GIPHY_RESULTS", payload: giphyResponse.data};
+        const nextAction = { type: "GIPHY_RESULTS", payload: giphyResponse.data };
         yield put(nextAction);
     } catch (error) {
         console.log('error in fetchGiphyResults', error);
