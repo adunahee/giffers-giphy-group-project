@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
 
 class CategoryListItems extends Component {
 
@@ -23,15 +25,15 @@ class CategoryListItems extends Component {
 
   render() {
     return (
-      <tr>
-        <td>
+      <TableRow>
+        <TableCell>
           {this.props.category.name}
-        </td>
-        <td>
+        </TableCell>
+        <TableCell>
           <button onClick={this.handleDelete}>Delete</button>
           <button onClick={this.handleEdit}>Edit</button>
-        </td>
-      </tr>
+        </TableCell>
+      </TableRow>
     )
   }
 }
