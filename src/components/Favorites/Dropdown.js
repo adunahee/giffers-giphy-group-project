@@ -45,15 +45,15 @@ class Dropdown extends Component {
         
         return (
             <div>
-            {this.props.categories.length > 1 && 
-            <form onSubmit={this.handleSetCategory}>
-                    <select defaultValue={defValue} required onChange={this.handleChange}>
-                        <option value="" disabled defaultValue>Select your option</option>
-                {this.buildSelectInput()}
-                </select>
-                <button type='submit'>Set Category</button>
-            </form>
-            }
+                {this.props.categories.length > 1 &&
+                    <form onSubmit={this.handleSetCategory}>
+                        <select defaultValue={defValue} required onChange={this.handleChange}>
+                            <option value="" disabled defaultValue>Select your option</option>
+                            {this.buildSelectInput()}
+                        </select>
+                        <button type='submit'>Set Category</button>
+                    </form>
+                }
             </div>
         )
     }

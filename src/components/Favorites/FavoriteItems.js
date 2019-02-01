@@ -14,6 +14,7 @@ import Dropdown from './Dropdown.js';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
+import Grid from '@material-ui/core/Grid';
 
 
 
@@ -28,23 +29,24 @@ class FavoriteItems extends Component {
 
     render() {
 
-        console.log(this.props.item.url);
+        // console.log(this.props.item.url);
         return (
-            
-            <div>
-                <Card>
+                <Grid item md={3}>
+                <Card className="result-card">
                     <CardMedia
                         component="img"
-                        className="item-img"
-                        height="auto"
-                        width="auto"
-                        image={this.props.item.url}
+                        alt="test"
+                        className="result-media"
+                        height="340"
+                        width="340"
+                        src={this.props.item.url}
+                        title="Title"
                     />
                     <CardActions>
                         <Dropdown item={this.props.item} />
                     </CardActions>
                 </Card>
-            </div>
+                </Grid>
             // <div className="item-div">
             //     <GridList cellHeight={180} className="grid-list">
             //         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
