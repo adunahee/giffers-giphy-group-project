@@ -1,7 +1,8 @@
 .result-card {
     max-width: 345;
+    margin: 10px;
 }
 
 .result-media {
-    height: 140;
+    height: 120;
 }
