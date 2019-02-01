@@ -31,7 +31,8 @@ class Dropdown extends Component {
 
     handleSetCategory = (event) => {
         event.preventDefault();
-        this.props.dispatch({ type: "SET_FAV_CATEGORY", action: this.state });
+        this.props.dispatch({ type: "SET_FAV_CATEGORY", payload: this.state });
+        
         swal('new category set');
     }
 

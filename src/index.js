@@ -41,6 +41,8 @@ function* fetchCategories() {
 function* setFavCategory(action) {
     try{
         yield axios.put('/api/favorite', action.payload);
+        
+        
         yield put({type: "FETCH_FAVORITES"})
     }
     catch(error){
