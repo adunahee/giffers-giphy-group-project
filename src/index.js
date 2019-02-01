@@ -40,9 +40,9 @@ function* fetchCategories() {
 }
 
 //fetchGiphyResults saga
-function* fetchGiphyResults() {
+function* fetchGiphyResults(action) {
     try {
-        const giphyResponse = yield axios.get('/api/results');
+        const giphyResponse = yield axios.get(`/api/results/${action.payload}`);
         console.log(giphyResponse.data);
         const nextAction = { type: "GIPHY_RESULTS", payload: giphyResponse.data};
         yield put(nextAction);
