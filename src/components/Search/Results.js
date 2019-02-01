@@ -5,14 +5,9 @@ import './Results.css';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
-
-
-
 import Grid from '@material-ui/core/Grid';
 
-const mapStoreToProps = reduxStore => ({
-    reduxStore,
-});
+
 
 class Results extends Component {
     constructor() {
