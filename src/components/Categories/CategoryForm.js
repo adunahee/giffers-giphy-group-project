@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import TextField from '@material-ui/core/TextField';
+import SendIcon from '@material-ui/icons/Send';
+import Button from '@material-ui/core/Button';
 
 class CategoryForm extends Component {
     constructor(props) {
@@ -24,8 +27,16 @@ class CategoryForm extends Component {
     render() {
         return (
             <form onSubmit={this.handleAddCategory}>
-                <input type='text' required onChange={this.handleChange} value={this.state.category}/>
-                <button type='submit'>Add Category</button>
+                <TextField
+                    required
+                    id="category"
+                    label="New Category"
+                    value={this.state.category}
+                    margin="normal"
+                    type='text'
+                    onChange={this.handleChange}
+                />
+                <Button type='submit'><SendIcon /></Button>
             </form>
         )
     }

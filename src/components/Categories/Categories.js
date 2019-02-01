@@ -10,6 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import './Categories.css';
 
 
+
 class Categories extends Component {
 
     buildCategoryList = () => {
