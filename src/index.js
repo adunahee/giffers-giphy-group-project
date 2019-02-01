@@ -17,7 +17,9 @@ const sagaMiddleware = createSagaMiddleware();
 //root saga 
 function* rootSaga() {
     yield takeEvery("FETCH_CATEGORIES", fetchCategories);
+
     yield takeEvery("FETCH_FAVORITES", fetchFavorites);
+
     yield takeEvery('ADD_FAVORITE', addFavorite);
     yield takeEvery("FETCH_GIPHY_RESULTS", fetchGiphyResults);
     yield takeEvery('DELETE_CATEGORY', deleteCategory);
