@@ -21,18 +21,23 @@ class Favorites extends Component {
         this.props.dispatch({ type: 'FETCH_FAVORITES'})
     }
 
+    buildCards= () => {
+        return (
+            this.props.reduxState.favorites.map((item, i) => {
+                return <FavoriteItems key={i} item={item} />
+            })
+        )
+    }
 
     render() {
         return (
             <div className="item-div">
-                <GridList cellHeight={180} className="grid-list">
+                {/* <GridList cellHeight={180} className="grid-list">
                     <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
                         <ListSubheader component="div">Favorite</ListSubheader>
-                    </GridListTile>
-                        {this.props.reduxState.favorites.map((item, i) => (
-                            <FavoriteItems key={i} item={item} />
-                        ))}
-                </GridList>
+                    </GridListTile> */}
+                        {this.buildCards()}
+                {/* </GridList> */}
             </div>
         )
     }
