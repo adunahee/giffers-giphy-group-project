@@ -1,0 +1,16 @@
+.item-div {
+    display: 'flex';
+    flex-wrap: wrap;
+    /* justifyContent: 'space-around'; */
+    overflow: 'hidden';
+    /* background-color: theme.palette.background.paper; */
+}
+    
+.grid-list {
+    width: 500;
+    height: 450;
+}
+
+.dropdown-form {
+    min-width: 120;
+}
