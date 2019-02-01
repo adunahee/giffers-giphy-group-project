@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ResultItems from './ResultItems';
+import './Results.css';
+import Input from '@material-ui/core/Input';
+import Button from '@material-ui/core/Button';
+import SearchIcon from '@material-ui/icons/Search';
+
+
 
 import Grid from '@material-ui/core/Grid';
 
@@ -32,14 +38,13 @@ class Results extends Component {
     }
 
 
-
     render() {
         return (
             <div>
                 <h3>Search</h3>
-                <form onSubmit={this.searchGif} >
-                    <input type='text' onChange={this.handleChangeState}></input>
-                    <button onClick={this.searchGif}>Search</button>
+                <form>
+                    <Input id='input' className='search-input' type='text' placeholder='Search for a gif...' onChange={this.handleChangeState}></Input>
+                    <Button onClick={this.searchGif} variant='contained' ><SearchIcon /></Button>
                 </form>
                 <Grid container spacing={24}>      
                     {this.props.reduxState.giphyResults.map((results, i) => (
