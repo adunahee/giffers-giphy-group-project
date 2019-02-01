@@ -18,3 +18,8 @@
 .giph-card-media {
     height: 100 !important;
 }
+
+#favorites-paper {
+    margin: 20px;
+    background-color: lightgray;
+}
