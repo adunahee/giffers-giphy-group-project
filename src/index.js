@@ -43,6 +43,7 @@ function* fetchCategories() {
 function* fetchGiphyResults() {
     try {
         const giphyResponse = yield axios.get('/api/results')
+        console.log(giphyResponse.data);
         const nextAction = { type: "FETCH_GIPHY_RESULTS", payload: giphyResponse.data };
         yield put(nextAction);
     } catch (error) {
@@ -96,11 +97,11 @@ function* addCategory(action) {
 }
 
 function* updateCategory(action) {
-    try{
+    try {
         yield axios.put('/api/category', action.payload);
-        yield put({ type: 'FETCH_CATEGORIES'})
+        yield put({ type: 'FETCH_CATEGORIES' })
     }
-    catch(error){
+    catch (error) {
         yield console.log('error updating category', error);
     }
 }
