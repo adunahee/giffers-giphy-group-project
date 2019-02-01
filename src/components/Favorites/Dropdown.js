@@ -2,13 +2,6 @@ import React, { Component } from 'react';
 import swal from 'sweetalert';
 import { connect } from 'react-redux';
 
-// material-ui import statements
-import FilledInput from '@material-ui/core/FilledInput';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import swal from 'sweetalert';
 
 class Dropdown extends Component {
     constructor(props) {

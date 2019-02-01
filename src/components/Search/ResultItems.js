@@ -30,7 +30,7 @@ class ResultItems extends Component {
 
     render() {
         return (
-            <Grid item md={3}>
+            <Grid item md={3}> 
                 <Card className="result-card" >
                     {/* {JSON.stringify(this.props.results.images.original)} */}
                     <CardActionArea>
