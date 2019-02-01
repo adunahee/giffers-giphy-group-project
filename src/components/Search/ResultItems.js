@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './ResultItems.css';
 
 // material-ui import statements
+import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 
 class ResultItems extends Component {
@@ -25,13 +25,14 @@ class ResultItems extends Component {
 
     render() {
         return (
-            <Card >
+            <Grid item md={3}>
+            <Card className="result-card" >
                 {/* {JSON.stringify(this.props.results.images.original)} */}
                 <CardActionArea>
                     <CardMedia
                         component="img"
                         alt="test"
-                        className="item-img"
+                        className="result-media"
                         height="340"
                         width="340"
                         src={this.props.results.images.downsized_medium.url}
@@ -44,6 +45,7 @@ class ResultItems extends Component {
                     </Tooltip>
                 </CardActions>
             </Card>
+            </Grid>
         )
     }
 }
