@@ -44,7 +44,7 @@ function* fetchGiphyResults() {
     try {
         const giphyResponse = yield axios.get('/api/results')
         console.log(giphyResponse.data);
-        const nextAction = { type: "FETCH_GIPHY_RESULTS", payload: giphyResponse.data };
+        const nextAction = { type: "GIPHY_RESULTS", payload: giphyResponse.data};
         yield put(nextAction);
     } catch (error) {
         console.log('error in fetchGiphyResults', error);
@@ -108,6 +108,9 @@ function* updateCategory(action) {
 
 //reducers
 const giphyResults = (state = [], action) => {
+    if (action.type === 'GIPHY_RESULTS') {
+        return action.payload;
+    }
     return state;
 }
 

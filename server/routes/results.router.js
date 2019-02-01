@@ -7,6 +7,7 @@ const BASE_URL = `https://api.giphy.com/v1/gifs/search`;
 const router = express.Router();
 
 router.get('/', (req, res) => {
+    console.log(req.query);
     axios({
         method: 'GET',
         url: `${BASE_URL}?api_key=${API_KEY}&q=${req.query.body}&limit=25&offset=0&rating=R&lang=en`

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ResultItems from './ResultItems';
 
+import Grid from '@material-ui/core/Grid';
+
 const mapStoreToProps = reduxStore => ({
     reduxStore,
 });
@@ -39,7 +41,11 @@ class Results extends Component {
                     <input type='text' onChange={this.handleChangeState}></input>
                     <button onClick={this.searchGif}>Search</button>
                 </form>
-                <ResultItems />
+                <Grid container spacing={24}>      
+                    {this.props.reduxState.giphyResults.map((results, i) => (
+                                <ResultItems key={i} results={results} />
+                            ))}
+                </Grid>
             </div>
 
 
@@ -47,5 +53,9 @@ class Results extends Component {
     }
 }
 
-export default connect(mapStoreToProps)(Results);
+const mapReduxStateToProps = reduxState => ({
+    reduxState
+});
+
+export default connect(mapReduxStateToProps)(Results);
 
