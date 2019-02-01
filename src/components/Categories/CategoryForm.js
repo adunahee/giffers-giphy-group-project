@@ -36,7 +36,7 @@ class CategoryForm extends Component {
                     type='text'
                     onChange={this.handleChange}
                 />
-                <Button type='submit'><SendIcon /></Button>
+                <Button variant='contained' type='submit'><SendIcon /></Button>
             </form>
         )
     }
