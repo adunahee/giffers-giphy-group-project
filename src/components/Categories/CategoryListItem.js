@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
+import Edit from '@material-ui/icons/Edit';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 class CategoryListItems extends Component {
 
@@ -30,8 +33,12 @@ class CategoryListItems extends Component {
           {this.props.category.name}
         </TableCell>
         <TableCell>
-          <button onClick={this.handleDelete}>Delete</button>
-          <button onClick={this.handleEdit}>Edit</button>
+          <IconButton onClick={this.handleDelete}>
+          <DeleteIcon />
+          </IconButton>
+          <IconButton onClick={this.handleEdit}>
+          <Edit />
+          </IconButton>
         </TableCell>
       </TableRow>
     )
