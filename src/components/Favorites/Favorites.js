@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FavoriteItems from './FavoriteItems.js';
 import { connect } from 'react-redux';
+import './FavoriteItems.css';
 
 // material-ui import statements
 import GridList from '@material-ui/core/GridList';
